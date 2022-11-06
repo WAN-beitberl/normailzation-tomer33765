@@ -1,0 +1,32 @@
+1. First, the column PURCHESES is a repeating group, thus, this is a violation 
+   of first normal form. Second, the column name depends on the column customerId 
+   which is not the primary key. This is a violation of the Third normal form.
+   Third, the data in the table will be better represented as two tables, thus, 
+   this a violation of fifth normal form. 
+
+2. An update anomaly can occur when we update a customer name/customerId, and then
+   it is not updated in the entire purchases of this client. 
+   A deletion anomaly can happen when we want to delete all of the purchases of a
+   client but not the client itself - this table definition will cause the client 
+   itself to be deleted because he has no purchases.
+   An insertion anomaly can occur when we want to insert a new client that has no
+   purchases.
+
+3. 
+-- create
+CREATE TABLE PURCHESES (id INTEGER PRIMARY KEY, product TEXT NOT NULL PRIMARY KEY, customerId INTEGER);
+CREATE TABLE CUSTOMERS (customerId INTEGER PRIMARY KEY, name TEXT NOT NULL);
+
+-- insert
+INSERT INTO PURCHESES VALUES (1, "avocados", 123), (1, "bananas", 123);
+INSERT INTO CUSTOMERS VALUES (123, "daniel");
+
+-- query
+SELECT * FROM PURCHESES;
+SELECT * FROM CUSTOMERS;
+
+4. First, the column PURCHESES is a repeating group, thus, this is a violation 
+   of first normal form. Second, the column name depends on the column customerId 
+   which is not the primary key. This is a violation of the Third normal form.
+   Third, the data in the table will be better represented as two tables, thus, 
+   this a violation of fifth normal form. 
